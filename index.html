@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <script src="https://kit.fontawesome.com/d5c6e9e002.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>JS Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
     </style>
@@ -25,28 +25,29 @@
             </div>
         </div>
         <div class="flex-[60%] bg-slate-800 sm:rounded-b-[25px] text-2xl
-                    grid grid-cols-4 gap-2 py-5 px-5 sm:px-10 lg:px-5">
-            <button>C</button>
-            <button>%</button>
-            <button><i class="fa-solid fa-delete-left"></i></button>
-            <button>÷</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>x</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
-            <button>00</button>
-            <button>0</button>
-            <button>.</button>
-            <button>=</button>
+                    grid grid-cols-4 gap-2 justify-items-center items-center py-5 px-5 sm:px-10 lg:px-5">
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="clear">C</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="percentage">%</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="delete"><i class="fa-solid fa-delete-left"></i></button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="divide">÷</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="seven">7</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="eight">8</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="nine">9</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="multiply">x</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="four">4</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="five">5</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="six">6</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="subtract">-</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="one">1</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="two">2</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="three">3</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="add">+</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="doublezero">00</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="zero">0</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="dot">.</button>
+            <button class="hover:text-3xl hover:transition hover: duration-300 hover:ease-in-out w-10 h-10" id="equal">=</button>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
