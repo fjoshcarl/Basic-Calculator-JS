@@ -22,6 +22,7 @@ const displayInput = (input) => {
         equation.innerText = input; // removes 0 as the first digit when another number is inserted as input
     } else {
         equation.innerText += input;
+        solveEquation();
     }
 }
 
@@ -107,6 +108,5 @@ symbols.forEach(symbol => {
 numbers.forEach(number => {
     number.addEventListener('click', () => {
         displayInput(number.innerText);
-        solveEquation();
     });
 })
