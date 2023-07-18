@@ -38,7 +38,7 @@ const solveEquation = () => {
             answer.innerText = eval(equation.innerText);
         }
     } catch (error) {
-        answer.innerText = "Syntax error";
+        answer.innerText = error;
     }
 }
 
@@ -48,6 +48,10 @@ const solveSymbols = () => {
     equationValue = equationValue.replaceAll("÷", "/");
     equationValue = equationValue.replaceAll("x", "*");
     console.log(equationValue);
+    console.log(eval(equationValue));
+    if (!isFinite(equationValue)) {
+        throw "Syntax error";
+    }
     return equationValue;
 }
 
@@ -58,21 +62,21 @@ clear.addEventListener("click", () => {
 })
 
 del.addEventListener("click", () => {
-    if(equation.innerText != "0"){ // prevents blank equation when it is zero
-        if(equation.innerText.slice(-1) == "."){
+    if (equation.innerText != "0") { // prevents blank equation when it is zero
+        if (equation.innerText.slice(-1) == ".") {
             pointcount = 0;
         }
         equation.innerText = equation.innerText.slice(0, -1);
         solveEquation();
 
-        if(equation.innerText.length == 0){
+        if (equation.innerText.length == 0) {
             displayInput("0");
         }
     }
 })
 
 dot.addEventListener("click", () => {
-    if(pointcount == 0) {
+    if (pointcount == 0) {
         displayInput(".");
         pointcount = 1;
     }
