@@ -104,7 +104,10 @@ symbols.forEach(symbol => {
                 equation.innerText = equation.innerText.slice(0, -1);
                 displayInput(symbol.innerText);
             }
-        } else { // normal
+        } if (lastdigit == '%' && symbol.innerText == '%') {
+            console.log("consecutive percentage symbols not allowed");
+        }
+        else {
             displayInput(symbol.innerText);
         }
         pointcount = 0;
