@@ -85,25 +85,29 @@ equal.addEventListener("click", () => {
 symbols.forEach(symbol => {
     symbol.addEventListener('click', () => {
         const lastdigit = equation.innerText.slice(-1);
-        if (lastdigit == ".") {    // automatically inputs 0 when last digit is a point
-            displayInput(`0${symbol.innerText}`);
-        } else if (operatorarr.includes(lastdigit)) {    // consecutive operators case
-            if ((lastdigit == 'x' || lastdigit == '÷') && symbol.innerText == '-') {
-                displayInput(symbol.innerText);
-            } else if (equation.innerText.slice(-2, -1) == 'x' || (equation.innerText.slice(-2, -1) == '÷') && lastdigit == '-') {
-                equation.innerText = equation.innerText.slice(0, -2);
-                displayInput(symbol.innerText);
-            } else {
-                equation.innerText = equation.innerText.slice(0, -1);
+        if ((equation.innerText.length == 1 && equation.innerText == "0") && (symbol.innerText != "+" && symbol.innerText != "x" && symbol.innerText != "÷" && symbol.innerText != "%")) { // if 1st character is minus operator
+            displayInput(symbol.innerText);     // only allows minus operator as 1st character
+        } else if (equation.innerText.length >= 1 && equation.innerText != "0" && lastdigit != "-") {
+            if (lastdigit == ".") {     // automatically inputs 0 when last digit is a point
+                displayInput(`0${symbol.innerText}`);
+            } else if (operatorarr.includes(lastdigit)) {    // consecutive operators case
+                if ((lastdigit == 'x' || lastdigit == '÷') && symbol.innerText == '-') {
+                    displayInput(symbol.innerText);
+                } else if (equation.innerText.slice(-2, -1) == 'x' || (equation.innerText.slice(-2, -1) == '÷') && lastdigit == '-') {
+                    equation.innerText = equation.innerText.slice(0, -2);
+                    displayInput(symbol.innerText);
+                } else {
+                    equation.innerText = equation.innerText.slice(0, -1);
+                    displayInput(symbol.innerText);
+                }
+            } else if (lastdigit == '%' && symbol.innerText == '%') {
+                console.log("consecutive percentage symbols not allowed");
+            }
+            else {
                 displayInput(symbol.innerText);
             }
-        } else if (lastdigit == '%' && symbol.innerText == '%') {
-            console.log("consecutive percentage symbols not allowed");
+            pointcount = 0;
         }
-        else {
-            displayInput(symbol.innerText);
-        }
-        pointcount = 0;
     });
 })
 
