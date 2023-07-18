@@ -66,8 +66,10 @@ del.addEventListener("click", () => {
             pointcount = 0;
         }
         equation.innerText = equation.innerText.slice(0, -1);
-        solveEquation();
+        if (!operatorarr.includes(equation.innerText.slice(-1))) {
+            solveEquation();
 
+        }
         if (equation.innerText.length == 0) {
             displayInput("0");
         }
