@@ -3,19 +3,13 @@ const percentage = document.getElementById("percentage");
 const del = document.getElementById("delete");
 const dot = document.getElementById("dot");
 const equal = document.getElementById("equal");
-
-
 const numbers = document.querySelectorAll(".num");
 const symbols = document.querySelectorAll(".symbol");
-
 const equation = document.getElementById("equation");
 const answer = document.getElementById("answer");
 const operatorarr = ['+', 'x', '÷', '-'];
 let pointcount = 0;
 let equationValue;
-
-
-
 
 const displayInput = (input) => {
     if(equation.innerText == "0" || equation.innerText == "00") {
@@ -68,7 +62,6 @@ del.addEventListener("click", () => {
         equation.innerText = equation.innerText.slice(0, -1);
         if (!operatorarr.includes(equation.innerText.slice(-1))) {
             solveEquation();
-
         }
         if (equation.innerText.length == 0) {
             displayInput("0");
@@ -104,7 +97,7 @@ symbols.forEach(symbol => {
                 equation.innerText = equation.innerText.slice(0, -1);
                 displayInput(symbol.innerText);
             }
-        } if (lastdigit == '%' && symbol.innerText == '%') {
+        } else if (lastdigit == '%' && symbol.innerText == '%') {
             console.log("consecutive percentage symbols not allowed");
         }
         else {
