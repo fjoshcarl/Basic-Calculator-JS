@@ -22,8 +22,7 @@ const displayInput = (input) => {
         equation.innerText = input; // removes 0 as the first digit when another number is inserted as input
     } else {
         equation.innerText += input;
-        if(!operatorarr.includes(equation.innerText.slice(-1))
-        ) {
+        if(!operatorarr.includes(equation.innerText.slice(-1))) {
             solveEquation();
         }
     }
@@ -32,13 +31,17 @@ const displayInput = (input) => {
 const solveEquation = () => {
     try {
         if (equation.innerText.includes("%") || equation.innerText.includes("x") || equation.innerText.includes("÷")) {
-            answer.innerText = eval(solveSymbols());
+            if (isFinite(eval(solveSymbols()))) {
+                answer.innerText = eval(solveSymbols());
+            } else {
+                answer.innerText = "Syntax error"; // when dividing by zero
+            }
         }
         else {
             answer.innerText = eval(equation.innerText);
         }
     } catch (error) {
-        answer.innerText = error;
+        answer.innerText = "Syntax error";
     }
 }
 
@@ -48,10 +51,6 @@ const solveSymbols = () => {
     equationValue = equationValue.replaceAll("÷", "/");
     equationValue = equationValue.replaceAll("x", "*");
     console.log(equationValue);
-    console.log(eval(equationValue));
-    if (!isFinite(equationValue)) {
-        throw "Syntax error";
-    }
     return equationValue;
 }
 
@@ -83,7 +82,9 @@ dot.addEventListener("click", () => {
 })
 
 equal.addEventListener("click", () => {
-    equation.innerText = answer.innerText;
+    if (answer.innerText != "Syntax error") {
+        equation.innerText = answer.innerText;
+    }
 })
 
 symbols.forEach(symbol => {
