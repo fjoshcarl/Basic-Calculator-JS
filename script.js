@@ -22,7 +22,10 @@ const displayInput = (input) => {
         equation.innerText = input; // removes 0 as the first digit when another number is inserted as input
     } else {
         equation.innerText += input;
-        solveEquation();
+        if(!operatorarr.includes(equation.innerText.slice(-1))
+        ) {
+            solveEquation();
+        }
     }
 }
 
@@ -40,15 +43,11 @@ const solveEquation = () => {
 }
 
 const solveSymbols = () => {
-    if (equation.innerText.includes("%")) {
-        equationValue = equation.innerText.replaceAll("%", "/100");
-    }
-    if (equation.innerText.includes("x")) {
-        equationValue = equation.innerText.replaceAll("x", "*");
-    }
-    if (equation.innerText.includes("÷")) {
-        equationValue = equation.innerText.replaceAll("÷", "/");
-    }
+    equationValue = equation.innerText;
+    equationValue = equationValue.replaceAll("%", "/100");
+    equationValue = equationValue.replaceAll("÷", "/");
+    equationValue = equationValue.replaceAll("x", "*");
+    console.log(equationValue);
     return equationValue;
 }
 
