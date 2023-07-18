@@ -106,6 +106,8 @@ symbols.forEach(symbol => {
 
 numbers.forEach(number => {
     number.addEventListener('click', () => {
-        displayInput(number.innerText);
+        if (equation.innerText.slice(-1) != "%") { // prevent input of num if last character is %
+            displayInput(number.innerText);
+        }
     });
 })
