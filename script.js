@@ -102,12 +102,17 @@ symbols.forEach(symbol => {
                 }
             } else if (lastdigit == '%' && symbol.innerText == '%') {
                 console.log("consecutive percentage symbols not allowed");
-            }
-            else {
+            } else {
                 displayInput(symbol.innerText);
             }
-            pointcount = 0;
+        } else {
+            if (symbol.innerText == "-") { // bug fix
+                equation.innerText = equation.innerText.slice(0, -1);
+                displayInput(symbol.innerText);
+            }
         }
+        pointcount = 0;
+
     });
 })
 
