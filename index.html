@@ -10,45 +10,81 @@
     <title>JS Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+        .history::-webkit-scrollbar {
+        display: none;
+        }
     </style>
 </head>
 <body>
     <div class="w-screen h-screen sm:px-32 lg:px-64 sm:py-20 lg:px-[30vw]
                 flex flex-col
                 bg-slate-950 text-slate-50 font-rubik">
-        <div class="flex-[40%] bg-slate-900 sm:rounded-t-[25px] flex justify-center items-center">
+
+        <div class="flex-[5%] sm:rounded-t-[25px] flex justify-start items-center
+                    px-5 py-2 sm:px-10 lg:px-5 bg-slate-900 text-slate-700 text-xl">
+            <button class="w-10 h-10"><i class="fa-regular fa-clock hover:text-2xl"></i></button>
+        </div>
+
+        <div class="flex-[35%] bg-slate-900 flex justify-center items-center">
             <div class="w-11/12 h-4/6 grid grid-cols-1 overflow-hidden">
                 <span class="w-full h-3/6 flex justify-end text-4xl whitespace-nowrap">
                       <span id="equation">0</span>
                 </span>
-                <span class="w-full h-3/6 flex justify-end text-xl whitespace-nowrap"
+                <span class="w-full h-3/6 flex justify-end text-xl whitespace-nowrap text-slate-500"
                       <span id="answer">0</span>
                 </span>
             </div>
         </div>
-        <div class="flex-[60%] bg-slate-800 sm:rounded-b-[25px] text-2xl
-                    grid grid-cols-4 gap-2 justify-items-center items-center py-5 px-5 sm:px-10 lg:px-5">
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="clear">C</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol" id="percentage">%</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="delete"><i class="fa-solid fa-delete-left"></i></button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">÷</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">7</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">8</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">9</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">x</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">4</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">5</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">6</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">-</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">1</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">2</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">3</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">+</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">00</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">0</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="dot">.</button>
-            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="equal">=</button>
+
+        <div class="flex-[60%] flex bg-slate-800 sm:rounded-b-[25px] text-2xl
+                    py-5 px-5 sm:px-10 lg:px-5">
+
+                    <div class="flex-[75%] relative">
+
+                        <div class="flex flex-col absolute z-10 w-0 h-full text-base bg-slate-800">
+                            <div class="history flex-[90%] w-full overflow-y-auto">
+                                <!--    INSERT ANSWER HISTORY HERE  -->
+                                <div class="grid grid-cols-1 mx-1 overflow-hidden whitespace-nowrap">
+                                    <p class="flex justify-end">102140122+40214121+14.124x1212.412</p>
+                                    <button class="history-answer flex justify-end text-slate-500">7032590389.22</button>
+                                </div>
+                            </div>
+                            <div class="flex-[10%] text-center overflow-hidden">
+                                <button>Clear</button>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 justify-items-center items-center w-full h-full">
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="clear">C</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol" id="percentage">%</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="delete"><i class="fa-solid fa-delete-left"></i></button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">7</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">8</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">9</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">4</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">5</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">6</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">1</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">2</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">3</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">00</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 num">0</button>
+                            <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="dot">.</button>
+                        </div>
+
+                    </div>
+
+                    <div class="flex-[25%] grid grid-cols-1 gap-2 justify-items-center items-center w-full">
+                        <button class="hidden hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="delete"><i class="fa-solid fa-delete-left"></i></button>
+                        <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">÷</button>
+                        <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">x</button>
+                        <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">-</button>
+                        <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10 symbol">+</button>
+                        <button class="hover:text-3xl hover:transition hover:duration-1000 hover:ease-in-out w-10 h-10" id="equal">=</button>
+                    </div>
+
         </div>
+
     </div> 
     <script src="script.js"></script>
 </body>
