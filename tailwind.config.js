@@ -6,7 +6,11 @@ tailwind.config = {
         },
         fontFamily: {
           'rubik': ['Rubik', 'sans-serif']
-      },
+        },
+        transitionProperty: {
+          'width': 'width',
+          'font-size': 'font-size'
+        },
       }
     }
   }
