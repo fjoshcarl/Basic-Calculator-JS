@@ -1,2 +1,2 @@
 # Basic-Calculator-JS
-A calculator mini project built using basic web technologies
+A web-based calculator mini project inspired by Realme 6 pro's default calculator app
