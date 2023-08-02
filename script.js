@@ -1,6 +1,6 @@
 const clear = document.getElementById("clear");
 const percentage = document.getElementById("percentage");
-const del = document.getElementById("delete");
+const deleteButtons = document.querySelectorAll(".delete");
 const dot = document.getElementById("dot");
 const equal = document.getElementById("equal");
 const numbers = document.querySelectorAll(".num");
@@ -11,6 +11,7 @@ const history = document.getElementById("history");
 const historyContainer = document.getElementById("history-container");
 const historyButton = document.getElementById("history-button");
 const clearHistoryButton = document.getElementById("history-clear");
+const delSide = document.getElementById("delete-side");
 const operatorArr = ['+', 'x', '÷', '-'];
 let pointCount = 0;
 let equationValue;
@@ -51,7 +52,6 @@ const solveSymbols = () => {
     equationValue = equationValue.replaceAll("%", "/100");
     equationValue = equationValue.replaceAll("÷", "/");
     equationValue = equationValue.replaceAll("x", "*");
-    console.log(equationValue);
     return equationValue;
 }
 
@@ -90,20 +90,22 @@ clear.addEventListener("click", () => {
     pointCount = 0;
 })
 
-del.addEventListener("click", () => {
-    // prevents blank equation when it is zero
-    if (equation.innerText != "0") {
-        if (equation.innerText.slice(-1) == ".") {
-            pointCount = 0;
+deleteButtons.forEach(deleteButton => {
+    deleteButton.addEventListener("click", () => {
+        // prevents blank equation when it is zero
+        if (equation.innerText != "0") {
+            if (equation.innerText.slice(-1) == ".") {
+                pointCount = 0;
+            }
+            equation.innerText = equation.innerText.slice(0, -1);
+            if (!operatorArr.includes(equation.innerText.slice(-1))) {
+                solveEquation();
+            }
+            if (equation.innerText.length == 0) {
+                displayInput("0");
+            }
         }
-        equation.innerText = equation.innerText.slice(0, -1);
-        if (!operatorArr.includes(equation.innerText.slice(-1))) {
-            solveEquation();
-        }
-        if (equation.innerText.length == 0) {
-            displayInput("0");
-        }
-    }
+    })
 })
 
 dot.addEventListener("click", () => {
@@ -145,11 +147,19 @@ historyButton.addEventListener("click", () => {
         historyButton.classList.add("text-slate-700");
         history.classList.remove("w-0");
         history.classList.add("w-full");
+        delSide.classList.remove("w-0");
+        delSide.classList.add("w-auto");
+        delSide.classList.remove("h-0");
+        delSide.classList.add("h-auto");
     } else {
         historyButton.classList.remove("text-slate-700");
         historyButton.classList.add("text-slate-500");
         history.classList.remove("w-full");
         history.classList.add("w-0");
+        delSide.classList.remove("w-auto");
+        delSide.classList.add("w-0");
+        delSide.classList.remove("h-auto");
+        delSide.classList.add("h-0");
     }
 })
 
