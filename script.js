@@ -109,8 +109,12 @@ deleteButtons.forEach(deleteButton => {
 })
 
 dot.addEventListener("click", () => {
-    if (pointCount == 0) {
-        displayInput(".");
+    if (pointCount == 0) {       // prevents multiple unnecessary decimal points
+        if(operatorArr.includes(equation.innerText.slice(-1)) || equation.innerText.slice(-1) == "%") {    // if last digit is an operator or %, add zero before decimal point
+            displayInput("0.");
+        } else {
+            displayInput(".");
+        }
         pointCount = 1;
     }
 })
